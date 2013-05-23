@@ -1,0 +1,23 @@
+
+<%=form_for @user, url:cec_create_path, id:"new_task", remote:true do |f| %>
+
+
+   <div><%= f.label :name %><br />
+  <%= f.text_field :name, :autofocus => true %></div>
+
+    <div><%= f.label :username %><br />
+  <%= f.text_field :username, :autofocus => true %></div>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <% f.label :role %><br />
+  <% f.text_field :role,:value => "L", :autofocus => true %>
+  <%=f.submit "Save", :class => "btn btn-primary", remote:true %>
+<%end%>
