@@ -18,4 +18,6 @@ class User < ActiveRecord::Base
   validates :name, :length => { :minimum => 3 }
   validates :username, :length => { :minimum => 5 }
   validates :password, :length => { :minimum => 6 }
+  validates_inclusion_of :branch, :in=>%w(CS EC EE EI NA)
+  validates :branch, :length => { :maximum => 2 }, :presence => true
 end

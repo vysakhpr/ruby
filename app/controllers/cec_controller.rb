@@ -1,6 +1,15 @@
 class CecController < ApplicationController
  before_filter :authenticate_user!, :except => [:home]
   def home
+    if user_signed_in?
+      if current_user.role == "H"
+        redirect_to "/admin2"
+      elsif current_user.role =="L"
+        redirect_to "/staff"
+      else
+        redirect_to "/admin3"
+      end
+    end
   end
 
   def new
@@ -9,7 +18,7 @@ class CecController < ApplicationController
   end
 
   def create
-     @user=User.new(params[:todo])
+     @user=User.new(params[:user])
      if @user.save
       flash[:notice] ="Saved"
       respond_to do |format|
